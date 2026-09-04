@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprende JavaScript — Fundamentos</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <header class="cabecera">
+    <h1>Aprende JavaScript</h1>
+    <p class="lema">Variables, tipos de datos y asignación</p>
+  </header>
+
+  <nav class="menu">
+    <a href="index.html">Qué es JavaScript</a>
+    <a href="fundamentos.html" class="activo">Fundamentos</a>
+    <a href="control.html">Control del flujo</a>
+  </nav>
+
+  <main>
+
+    <!-- ============ TEMA 2: VARIABLES ============ -->
+    <section id="tema-variables" class="tema">
+      <h2>2. Variables</h2>
+
+      <p>
+        Una variable sirve para guardar un dato bajo un nombre, de modo que no haya que repetirlo
+        cada vez que se necesite y se pueda cambiar en un solo lugar. Puede pensarse como una caja
+        con una etiqueta: adentro guarda un valor, y la etiqueta (el nombre) dice qué representa
+        ese valor. Un buen nombre de variable documenta el programa por sí solo: no es lo mismo
+        leer <code>let x = 4.2;</code> que leer <code>let notaFinal = 4.2;</code>.
+      </p>
+
+      <h3>Así se ve</h3>
+      <pre><code>let nombre = "Ana";
+const PI = 3.1416;
+nombre = "Ana María";   // let sí permite cambiar el valor
+PI = 3;                 // esto falla: const no se puede reasignar</code></pre>
+
+      <h3>Pruébelo</h3>
+      <button id="btnGuardarNombre">Guardar mi nombre</button>
+      <button id="btnCambiarNombre">Cambiarlo</button>
+      <p id="salidaNombre" class="salida"></p>
+
+      <h3>Cuidado con</h3>
+      <p class="aviso">
+        Intentar reasignar una variable declarada con <code>const</code> produce el error
+        <code>Uncaught TypeError: Assignment to constant variable.</code> Este mensaje aparece
+        apenas el motor de JavaScript encuentra la línea que intenta cambiar el valor de una
+        constante; por eso <code>const</code> solo debe usarse cuando el valor realmente no va a
+        cambiar durante la ejecución.
+      </p>
+    </section>
+
+    <!-- ============ TEMA 3: DATOS Y TIPOS DE DATOS ============ -->
+    <section id="tema-tipos" class="tema">
+      <h2>3. Datos y tipos de datos</h2>
+
+      <p>
+        Cada valor en JavaScript tiene un tipo, y el tipo determina qué operaciones son válidas
+        sobre él: los números se pueden sumar, los textos se pueden unir. Existen siete tipos
+        primitivos (number, string, boolean, undefined, null, symbol y bigint) y un octavo grupo,
+        object, que agrupa las colecciones de datos. El operador <code>typeof</code> permite
+        preguntar de qué tipo es un valor en tiempo de ejecución. JavaScript tiene tipado
+        dinámico: el tipo lo determina el valor que se guarda, no una declaración previa, así que
+        una misma variable puede cambiar de tipo con el tiempo — aunque poder hacerlo no significa
+        que sea buena práctica. Dos particularidades vale la pena mencionar: <code>typeof
+        null</code> devuelve <code>"object"</code> por un error histórico del lenguaje que nunca
+        se corrigió para no romper código antiguo, y <code>NaN</code> ("Not a Number") es, de
+        forma contraintuitiva, de tipo <code>number</code>.
+      </p>
+
+      <h3>Así se ve</h3>
+      <pre><code>typeof "hola"     // "string"
+typeof 42         // "number"
+typeof true       // "boolean"
+typeof null       // "object"  (rareza histórica)
+typeof NaN        // "number"  (rareza también)</code></pre>
+
+      <h3>Pruébelo</h3>
+      <label for="campoTipo">Escriba cualquier cosa:</label>
+      <input type="text" id="campoTipo" placeholder="Escriba algo...">
+      <button id="btnQueTipo">¿Qué tipo es?</button>
+      <p id="salidaTipo" class="salida"></p>
+
+      <p>Compare ahora con tres valores fijos que no vienen de un campo de texto:</p>
+      <button id="btnTipoNumero">Probar un número</button>
+      <button id="btnTipoBooleano">Probar un booleano</button>
+      <button id="btnTipoNulo">Probar un valor nulo</button>
+      <p id="salidaTipoFijo" class="salida"></p>
+
+      <h3>Cuidado con</h3>
+      <p class="aviso">
+        Todo lo que llega desde un <code>&lt;input&gt;</code> es siempre texto (string), incluso
+        si el visitante escribió números. Por eso <code>"5" + 3</code> da como resultado
+        <code>"53"</code> (el <code>+</code> concatena en vez de sumar) en lugar de <code>8</code>.
+        Este comportamiento es la raíz de muchos errores y se relaciona directamente con la
+        asignación y la conversión de tipos del siguiente tema.
+      </p>
+    </section>
+
+    <!-- ============ TEMA 4: LA OPERACIÓN DE ASIGNACIÓN ============ -->
+    <section id="tema-asignacion" class="tema">
+      <h2>4. La operación de asignación</h2>
+
+      <p>
+        El signo <code>=</code> en programación no es una igualdad matemática, es una orden: "toma
+        lo que hay a la derecha y guárdalo en lo que hay a la izquierda". Por eso una línea como
+        <code>contador = contador + 1;</code>, que sería absurda en álgebra, es perfectamente
+        normal en código: primero se calcula el lado derecho con el valor actual de
+        <code>contador</code>, y solo después se guarda el resultado en esa misma variable. Esta
+        diferencia es también la razón por la que <code>=</code> (asignar) y <code>===</code>
+        (comparar) son operadores completamente distintos; confundirlos es uno de los errores más
+        difíciles de detectar, porque el código sigue "funcionando" sin lanzar ningún error. El
+        orden de las líneas importa: <code>let total = precio * cantidad;</code> solo puede
+        ejecutarse si <code>precio</code> y <code>cantidad</code> ya tienen un valor asignado
+        antes. Por último, existen operadores compuestos como <code>+=</code> e <code>++</code>,
+        que son atajos de escritura muy comunes en código profesional, sobre todo dentro de ciclos.
+      </p>
+
+      <h3>Así se ve</h3>
+      <pre><code>let contador = 0;
+contador = contador + 1;   // forma larga
+contador += 1;             // forma corta, mismo resultado
+contador++;                // atajo aún más corto</code></pre>
+
+      <h3>Pruébelo</h3>
+      <button id="btnSumar">Sumar 1</button>
+      <button id="btnRestar">Restar 1</button>
+      <button id="btnReiniciar">Reiniciar</button>
+      <p id="marcadorContador" class="salida">0</p>
+
+      <h3>Cuidado con</h3>
+      <p class="aviso">
+        Si la variable del contador se declara <em>dentro</em> de la función que atiende el clic,
+        se vuelve a crear en cero cada vez que se hace clic, y el marcador nunca pasará de 1. La
+        variable debe declararse afuera, una sola vez, para que conserve su valor entre un clic y
+        el siguiente.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <p>Stiven Conrado Romero — Ficha 3230489 — <span id="anio"></span></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprende JavaScript — Control del flujo</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <header class="cabecera">
+    <h1>Aprende JavaScript</h1>
+    <p class="lema">Condicionales y ciclos</p>
+  </header>
+
+  <nav class="menu">
+    <a href="index.html">Qué es JavaScript</a>
+    <a href="fundamentos.html">Fundamentos</a>
+    <a href="control.html" class="activo">Control del flujo</a>
+  </nav>
+
+  <main>
+
+    <!-- ============ TEMA 5: CONDICIONALES ============ -->
+    <section id="tema-condicionales" class="tema">
+      <h2>5. Condicionales</h2>
+
+      <p>
+        Una condicional deja que el programa tome caminos distintos según se cumpla o no una
+        condición. El resultado de comparar dos valores siempre es un booleano
+        (<code>true</code> o <code>false</code>), el tipo que se vio en el tema 3. Cuando hay
+        varias condiciones encadenadas con <code>if / else if</code>, JavaScript las evalúa en
+        orden y se detiene en la primera que sea verdadera; por eso conviene ir de lo más
+        restrictivo a lo más general. Para comparar es importante usar <code>===</code> y no
+        <code>==</code>: el operador flexible hace conversiones de tipo antes de comparar, y eso
+        produce sorpresas como que <code>0 == ""</code> dé <code>true</code>. Cuando se necesita
+        comparar una sola variable contra varios valores exactos, <code>switch</code> suele leerse
+        mejor que una cadena larga de <code>if</code>; para rangos o condiciones compuestas,
+        <code>if</code> sigue siendo la herramienta correcta.
+      </p>
+
+      <h3>Así se ve</h3>
+      <pre><code>// Varios caminos: se evalúa en orden y se detiene en el PRIMERO verdadero
+if (nota >= 4.6) {
+  nivel = "Superior";
+} else if (nota >= 4.0) {
+  nivel = "Alto";
+} else if (nota >= 3.0) {
+  nivel = "Básico";
+} else {
+  nivel = "Bajo";
+}</code></pre>
+
+      <h3>Pruébelo</h3>
+      <label for="campoNota">Nota (0 a 5):</label>
+      <input type="text" id="campoNota" placeholder="Ej: 4.2">
+      <button id="btnClasificar">Clasificar</button>
+      <p id="salidaNota" class="salida"></p>
+
+      <h3>Cuidado con</h3>
+      <p class="aviso">
+        Escribir <code>=</code> donde debería ir <code>===</code> es un error muy fácil de cometer
+        y muy difícil de notar: <code>if (nota = 5)</code> no compara nada, <em>asigna</em> el
+        valor 5 a <code>nota</code> y esa asignación, al no ser cero ni vacía, siempre se evalúa
+        como verdadera. El programa no lanza ningún error; simplemente entra siempre por la misma
+        rama, sin avisar que algo está mal.
+      </p>
+    </section>
+
+    <!-- ============ TEMA 6: CICLOS ============ -->
+    <section id="tema-ciclos" class="tema">
+      <h2>6. Ciclos</h2>
+
+      <p>
+        Un ciclo permite escribir una sola vez una instrucción que debe repetirse muchas veces, en
+        vez de copiar y pegar diez líneas casi iguales. El <code>for</code> es el más usado cuando
+        se sabe cuántas repeticiones se necesitan: tiene una inicialización, una condición y una
+        actualización, en ese orden, ejecutadas en cada vuelta. El <code>while</code> se usa
+        cuando no se sabe de antemano cuántas veces hay que repetir, solo la condición que debe
+        cumplirse; y el <code>do...while</code> es igual, salvo que garantiza al menos una
+        ejecución antes de revisar la condición. En muchos ciclos aparece un
+        <em>acumulador</em>: una variable declarada <strong>fuera</strong> del ciclo que va
+        sumando o construyendo el resultado en cada vuelta. Un descuido clásico es el ciclo
+        infinito: si la condición nunca llega a ser falsa, la página se congela; antes de escribir
+        un <code>while</code> conviene poder señalar exactamente qué línea hará que termine.
+      </p>
+
+      <h3>Así se ve</h3>
+      <pre><code>//      inicialización   condición   actualización
+for (let i = 1;          i <= 10;    i++) {
+  resultado += i + " ";
+}</code></pre>
+
+      <h3>Pruébelo</h3>
+      <label for="campoTabla">Número para la tabla de multiplicar:</label>
+      <input type="text" id="campoTabla" placeholder="Ej: 7">
+      <button id="btnGenerarTabla">Generar tabla</button>
+      <pre id="salidaTabla" class="salida"></pre>
+
+      <p>Segundo ejemplo: cuenta regresiva desde un número hasta cero.</p>
+      <label for="campoCuenta">Desde cuánto empezar:</label>
+      <input type="text" id="campoCuenta" placeholder="Ej: 5">
+      <button id="btnCuentaRegresiva">Iniciar cuenta regresiva</button>
+      <p id="salidaCuenta" class="salida"></p>
+
+      <h3>Cuidado con</h3>
+      <p class="aviso">
+        Declarar el acumulador <em>dentro</em> del ciclo lo reinicia en cada vuelta, así que al
+        terminar solo queda el valor de la última repetición en vez del total acumulado. También
+        es común pasarse por uno al recorrer una colección usando <code>i &lt;=
+        arreglo.length</code> en vez de <code>i &lt; arreglo.length</code>.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <p>Stiven Conrado Romero — Ficha 3230489 — <span id="anio"></span></p>
+  </footer>
+
+</body>
+</html>

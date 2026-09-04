@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprende JavaScript — Qué es JavaScript</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <header class="cabecera">
+    <h1>Aprende JavaScript</h1>
+    <p class="lema">Un recorrido corto por el lenguaje que le da vida a la web</p>
+  </header>
+
+  <nav class="menu">
+    <a href="index.html" class="activo">Qué es JavaScript</a>
+    <a href="fundamentos.html">Fundamentos</a>
+    <a href="control.html">Control del flujo</a>
+  </nav>
+
+  <main>
+
+    <section id="tema-que-es" class="tema">
+      <h2>1. Qué es JavaScript</h2>
+
+      <!-- ① La explicación -->
+      <p>
+        JavaScript es un lenguaje <strong>interpretado</strong>: no necesita compilarse antes de
+        ejecutarse, el navegador lo lee y lo corre directamente. Es, además, el único lenguaje que
+        los navegadores entienden de forma nativa; cualquier otro lenguaje que se use para la web
+        termina convertido a JavaScript en algún punto. Dentro de una página cada tecnología
+        cumple un papel distinto: el <abbr title="HyperText Markup Language">HTML</abbr> pone el
+        contenido, el <abbr title="Cascading Style Sheets">CSS</abbr> le da la apariencia y
+        JavaScript se encarga del comportamiento, es decir, de todo lo que responde a una acción
+        del usuario. Hoy en día JavaScript ya no vive solo dentro del navegador: con entornos como
+        Node.js también corre en servidores, y se usa para construir aplicaciones de escritorio y
+        aplicaciones móviles.
+      </p>
+
+      <!-- ② El código que se LEE -->
+      <h3>Así se ve</h3>
+      <pre><code>let saludo = "Hola";
+console.log(saludo);</code></pre>
+
+      <!-- ③ El código que se EJECUTA -->
+      <h3>Pruébelo</h3>
+      <button id="btnSaludo" aria-pressed="false">Saludar</button>
+      <p id="salidaSaludo" class="salida"></p>
+
+      <!-- ④ El error frecuente -->
+      <h3>Cuidado con</h3>
+      <p class="aviso">
+        Un error muy común de principiante es pensar que Java y JavaScript son el mismo lenguaje,
+        o que JavaScript es una versión "ligera" de Java. No lo son: comparten parte del nombre
+        por una decisión de mercadeo de los años 90 (Java estaba de moda y Netscape aprovechó el
+        parecido), pero su sintaxis, su forma de ejecutarse y su propósito son distintos.
+      </p>
+
+      <details>
+        <summary>¿Por qué se parecen tanto los nombres si son lenguajes distintos?</summary>
+        <p>
+          JavaScript se llamó originalmente <em>LiveScript</em>. Netscape lo renombró a
+          JavaScript como estrategia comercial, aprovechando la popularidad que Java tenía en ese
+          momento, aunque el diseño interno de ambos lenguajes no tiene relación directa.
+        </p>
+      </details>
+
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <p>Stiven Conrado Romero — Ficha 3230489 — <span id="anio"></span></p>
+  </footer>
+
+</body>
+</html>
