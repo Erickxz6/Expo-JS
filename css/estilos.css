@@ -1,0 +1,198 @@
+/* ---------- Variables: paleta del sitio ---------- */
+:root {
+  --fondo: #f7f7fb;
+  --fondo-tarjeta: #ffffff;
+  --texto: #22223b;
+  --acento: #4361ee;
+  --acento-suave: #edf0fe;
+  --suave: #6c6c80;
+  --borde: #dcdce6;
+  --exito: #2a9d8f;
+  --aviso: #e07a5f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  padding: 0 0 3rem;
+}
+
+/* ---------- Cabecera y navegación ---------- */
+.cabecera {
+  background: var(--acento);
+  color: #ffffff;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.cabecera h1 {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+.lema {
+  color: #e8ecff;
+  font-size: 1rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  background: var(--fondo-tarjeta);
+  padding: 1rem;
+  border-bottom: 1px solid var(--borde);
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--suave);
+  font-weight: 500;
+  padding: .4rem .8rem;
+  border-radius: 6px;
+}
+
+.menu a:hover {
+  background: var(--acento-suave);
+}
+
+/* Marcar la página actual en el menú */
+.menu a.activo {
+  font-weight: bold;
+  color: var(--acento);
+  background: var(--acento-suave);
+}
+
+/* ---------- Contenido principal ---------- */
+main {
+  max-width: 780px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.tema {
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.tema h2 {
+  color: var(--acento);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--acento-suave);
+  padding-bottom: .5rem;
+}
+
+.tema h3 {
+  margin: 1.5rem 0 .5rem;
+  font-size: 1rem;
+  color: var(--suave);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.tema p {
+  margin-bottom: .75rem;
+}
+
+/* ---------- El bloque de código ---------- */
+pre {
+  background: #1e1e2e;
+  color: #e8e8e8;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: .75rem;
+}
+
+code {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: .9rem;
+}
+
+p code, label code {
+  background: var(--acento-suave);
+  color: var(--acento);
+  padding: .1rem .35rem;
+  border-radius: 4px;
+}
+
+/* ---------- Controles: botones e inputs ---------- */
+button {
+  background: var(--acento);
+  color: #fff;
+  border: none;
+  padding: .55rem 1.1rem;
+  border-radius: 6px;
+  font-size: .95rem;
+  cursor: pointer;
+  margin: .25rem .4rem .25rem 0;
+}
+
+button:hover { opacity: .9; }
+button:active { transform: translateY(1px); }
+
+input[type="text"] {
+  padding: .5rem .7rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font-size: .95rem;
+  margin: .25rem .4rem .25rem 0;
+  width: 220px;
+  max-width: 100%;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .3rem;
+  font-size: .9rem;
+  color: var(--suave);
+}
+
+/* ---------- Salidas y avisos ---------- */
+.salida {
+  background: var(--acento-suave);
+  border-left: 4px solid var(--acento);
+  padding: .75rem 1rem;
+  border-radius: 6px;
+  margin-top: .75rem;
+  min-height: 1.2rem;
+}
+
+.aviso {
+  background: #fdecea;
+  border-left: 4px solid var(--aviso);
+  padding: .75rem 1rem;
+  border-radius: 6px;
+  color: #7a2e22;
+}
+
+details {
+  margin-top: 1rem;
+  background: var(--acento-suave);
+  border-radius: 6px;
+  padding: .75rem 1rem;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--acento);
+}
+
+/* ---------- Pie de página ---------- */
+.pie {
+  text-align: center;
+  color: var(--suave);
+  font-size: .85rem;
+  margin-top: 2rem;
+}
